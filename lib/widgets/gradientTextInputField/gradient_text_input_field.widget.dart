@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:wake_me_up/utils/constants/constants.utils.dart';
 
 class GradientTextInputField extends StatelessWidget {
+  final Widget textField;
+  GradientTextInputField({this.textField});
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -21,11 +23,11 @@ class GradientTextInputField extends StatelessWidget {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(
+          padding: EdgeInsets.symmetric(
             horizontal: 20,
             vertical: 10,
           ),
-          child: TextField(),
+          child: textField,
         ),
       ),
     );

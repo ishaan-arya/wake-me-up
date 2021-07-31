@@ -21,7 +21,7 @@ const kHeaderTextStyle = TextStyle(
 const kTimeTextStyle = TextStyle(
   color: kContrastColor,
   fontFamily: 'Poppins',
-  fontSize: 60,
+  fontSize: 70,
 );
 
 const kSubheadingTextStyle = TextStyle(
