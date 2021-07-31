@@ -1,7 +1,6 @@
 # wake_me_up
 
-This is a fun and innovative alarm app which will ensure that you get out of bed.  
-
+The perfect alarm clock app for people who just cannot get out of bed.
 ## Getting Started
 
 This project is a starting point for a Flutter application.
