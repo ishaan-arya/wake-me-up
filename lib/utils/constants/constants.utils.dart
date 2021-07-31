@@ -7,3 +7,8 @@ const kSecondaryColor = Color(0xFF62DCFA);
 const kContrastColor = Colors.white;
 
 const kContrastColor2 = Color(0xFFC4C4C4);
+
+const kHeaderTextStyle = TextStyle(
+  color: kContrastColor,
+  fontFamily: 'Poppins',
+);
