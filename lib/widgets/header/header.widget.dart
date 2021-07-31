@@ -14,7 +14,10 @@ class Header extends StatelessWidget {
             Icons.arrow_back_ios,
             color: kContrastColor,
           ),
-          Text(title),
+          SizedBox(
+            width: 100,
+          ),
+          Text(title, style: kHeaderTextStyle),
         ],
       ),
     );
