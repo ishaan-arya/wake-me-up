@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:wake_me_up/utils/constants/constants.utils.dart';
 
 class Header extends StatelessWidget {
@@ -6,20 +7,28 @@ class Header extends StatelessWidget {
   Header({this.title});
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 40),
-      child: Row(
-        children: [
-          Icon(
-            Icons.arrow_back_ios,
-            color: kContrastColor,
+    return Column(
+      children: [
+        SizedBox(height: 30),
+        AppBar(
+          leading: GestureDetector(
+            child: Icon(
+              Icons.arrow_back_ios,
+              color: kContrastColor,
+            ),
+            onTap: () {
+              Navigator.pop(context);
+            },
           ),
-          SizedBox(
-            width: 100,
+          title: Text(
+            title,
+            style: kHeaderTextStyle,
           ),
-          Text(title, style: kHeaderTextStyle),
-        ],
-      ),
+          centerTitle: true,
+          backgroundColor: kPrimaryColor,
+          elevation: 0,
+        ),
+      ],
     );
   }
 }
