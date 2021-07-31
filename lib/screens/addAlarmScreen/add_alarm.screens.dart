@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:wake_me_up/widgets/header/header.widget.dart';
@@ -18,21 +19,21 @@ class _AddAlarmScreenState extends State<AddAlarmScreen> {
   var ampm;
 
   bool isSwitched = false;
-  var textValue = 'Switch is OFF';
+  bool vibrate = false;
+
+  int slidingSegmentedControlValue = 1;
 
   void toggleSwitch(bool value) {
     if (isSwitched == false) {
       setState(() {
         isSwitched = true;
-        textValue = 'Switch Button is ON';
+        vibrate = true;
       });
-      print('Switch Button is ON');
     } else {
       setState(() {
         isSwitched = false;
-        textValue = 'Switch Button is OFF';
+        vibrate = false;
       });
-      print('Switch Button is OFF');
     }
   }
 
@@ -62,7 +63,7 @@ class _AddAlarmScreenState extends State<AddAlarmScreen> {
             children: [
               Header(title: 'Add an Alarm'),
               SizedBox(
-                height: 30,
+                height: 20,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -91,84 +92,125 @@ class _AddAlarmScreenState extends State<AddAlarmScreen> {
                 ),
               ),
               SizedBox(
-                height: 60,
+                height: 20,
+              ),
+              Image.asset(
+                _time.hour >= 5 && _time.hour <= 17
+                    ? 'images/sun-removebg-preview.png'
+                    : 'images/moon.png',
+                height: 70,
               ),
               Expanded(
                 child: Container(
-                  width: double.infinity,
-                  height: double.infinity,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: kLightPrimaryColor,
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black,
-                        blurRadius: 2.0,
+                        blurRadius: 3.0,
                         spreadRadius: 1.0,
                         offset:
                             Offset(2.0, 2.0), // shadow direction: bottom right
-                      )
+                      ),
                     ],
                   ),
                   child: Padding(
                     padding: EdgeInsets.symmetric(vertical: 30, horizontal: 40),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Repeat',
-                          style: kSubheadingTextStyle,
-                        ),
-                        GradientTextInputField(),
-                        Text(
-                          'Alarm Name',
-                          style: kSubheadingTextStyle,
-                        ),
-                        GradientTextInputField(
-                          textField: TextField(
-                            onChanged: (_value) {
-                              alarmName = _value;
-                            },
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Repeat',
+                            style: kSubheadingTextStyle,
                           ),
-                        ),
-                        Text(
-                          'Alarm Message',
-                          style: kSubheadingTextStyle,
-                        ),
-                        GradientTextInputField(
-                          textField: TextField(
-                            onChanged: (_value) {
-                              alarmMessage = _value;
-                            },
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Vibration',
-                              style: kSubheadingTextStyle,
+                          GradientTextInputField(
+                            textField: CupertinoSlidingSegmentedControl(
+                              groupValue: slidingSegmentedControlValue,
+                              children: {
+                                1: Text('Today',
+                                    style: TextStyle(color: kContrastColor)),
+                                2: Text('Weekdays',
+                                    style: TextStyle(color: kContrastColor)),
+                                3: Text('Daily',
+                                    style: TextStyle(color: kContrastColor)),
+                                4: Text('Weekends',
+                                    style: TextStyle(color: kContrastColor)),
+                              },
+                              onValueChanged: (value) {
+                                setState(() {
+                                  slidingSegmentedControlValue = value;
+                                });
+                              },
+                              thumbColor: kLightPrimaryColor,
                             ),
-                            Transform.scale(
-                              scale: 1.5,
-                              child: Switch(
-                                onChanged: toggleSwitch,
-                                value: isSwitched,
-                                activeColor: Colors.grey[700],
-                                activeTrackColor: kSecondaryColor,
-                                inactiveThumbColor: kSecondaryColor,
-                                inactiveTrackColor: Colors.grey[700],
+                          ),
+                          Text(
+                            'Alarm Name',
+                            style: kSubheadingTextStyle,
+                          ),
+                          GradientTextInputField(
+                            textField: TextField(
+                              onChanged: (_value) {
+                                alarmName = _value;
+                              },
+                            ),
+                          ),
+                          Text(
+                            'Alarm Message',
+                            style: kSubheadingTextStyle,
+                          ),
+                          GradientTextInputField(
+                            textField: TextField(
+                              onChanged: (_value) {
+                                alarmMessage = _value;
+                              },
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Vibration',
+                                style: kSubheadingTextStyle,
                               ),
-                            ),
-                          ],
-                        )
-                      ],
+                              Transform.scale(
+                                scale: 1.5,
+                                child: Switch(
+                                  onChanged: toggleSwitch,
+                                  value: isSwitched,
+                                  activeColor: kSecondaryColor,
+                                  activeTrackColor: Colors.grey[700],
+                                  inactiveThumbColor: kSecondaryColor,
+                                  inactiveTrackColor: Colors.grey[700],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
+              ),
+              GestureDetector(
+                child: Container(
+                  height: 50,
+                  width: MediaQuery.of(context).size.width,
+                  child: Center(
+                    child: Text(
+                      'Save',
+                      style: kSubheadingTextStyle,
+                    ),
+                  ),
+                ),
+                onTap: () {
+                  //TODO: Save Alarm
+                },
               ),
             ],
           ),

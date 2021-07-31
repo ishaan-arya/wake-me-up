@@ -9,7 +9,7 @@ class GradientTextInputField extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 20),
       child: Container(
-        height: 40,
+        height: 52,
         width: MediaQuery.of(context).size.width * 0.8,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
