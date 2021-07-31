@@ -9,11 +9,16 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 20),
+        SizedBox(height: 30),
         AppBar(
-          leading: Icon(
-            Icons.arrow_back_ios,
-            color: kContrastColor,
+          leading: GestureDetector(
+            child: Icon(
+              Icons.arrow_back_ios,
+              color: kContrastColor,
+            ),
+            onTap: () {
+              Navigator.pop(context);
+            },
           ),
           title: Text(
             title,
