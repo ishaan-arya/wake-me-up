@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:wake_me_up/widgets/header/header.widget.dart';
 import 'package:wake_me_up/utils/constants/constants.utils.dart';
 import 'package:wake_me_up/widgets/gradientTextInputField/gradient_text_input_field.widget.dart';
+import 'package:wake_me_up/models/alarm/alarm.model.dart';
 
 class AddAlarmScreen extends StatefulWidget {
   @override
@@ -10,6 +11,14 @@ class AddAlarmScreen extends StatefulWidget {
 }
 
 class _AddAlarmScreenState extends State<AddAlarmScreen> {
+  Alarm alarm = Alarm();
+
+  List<Repeat> repeatList = [
+    Repeat.Today,
+    Repeat.Weekdays,
+    Repeat.Daily,
+    Repeat.Weekends
+  ];
   String? alarmName;
   String? alarmMessage;
 
@@ -211,7 +220,14 @@ class _AddAlarmScreenState extends State<AddAlarmScreen> {
                   ),
                 ),
                 onTap: () {
-                  //TODO: Save Alarm
+                  alarm.name = alarmName;
+                  alarm.message = alarmMessage;
+                  alarm.repeat = repeatList[slidingSegmentedControlValue!];
+                  alarm.vibration = vibrate;
+                  print(alarm.name);
+                  print(alarm.message);
+                  print(alarm.repeat);
+                  print(alarm.vibration);
                 },
               ),
             ],
