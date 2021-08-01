@@ -24,8 +24,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-#  qr_code_scanner: ^0.5.2
-#  shared_preferences: ^2.0.6
+  qr_code_scanner: ^0.5.2
+  shared_preferences: ^2.0.6
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
