@@ -50,7 +50,6 @@ class MainAlarmsScreen extends StatelessWidget {
                 style: kProfileItemTextStyle,
               ),
               SizedBox(height: 40),
-              DesignedAnalogClock(),
               SizedBox(height: 20),
               Expanded(
                 child: Container(),
@@ -71,6 +70,7 @@ class MainAlarmsScreen extends StatelessWidget {
                     SizedBox(width: 1),
                   ],
                 ),
+                onTap: () {},
               ),
             ],
           ),
