@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wake_me_up/widgets/header/header.widget.dart';
 import 'package:wake_me_up/utils/constants/constants.utils.dart';
-import 'package:wake_me_up/widgets/gradientTextInputField/gradient_text_input_field.widget.dart';
+import 'package:wake_me_up/widgets/designedAnalogClock/designed_analog_clock.widget.dart';
+import 'package:wake_me_up/widgets/addAlarmButton/add_alarm_button.widget.dart';
 
 class MainAlarmsScreen extends StatelessWidget {
   var zero = DateTime.now().minute < 10 ? '0' : '';
@@ -47,6 +47,31 @@ class MainAlarmsScreen extends StatelessWidget {
               Text(
                 '${daysOfWeek[DateTime.now().weekday - 1]}, ${DateTime.now().day} ${months[DateTime.now().month - 1]}',
                 style: kProfileItemTextStyle,
+              ),
+              SizedBox(height: 40),
+              DesignedAnalogClock(),
+              SizedBox(height: 20),
+              Expanded(
+                child: Container(),
+              ),
+              AddAlarmButton(
+                onTap: () {
+                  Navigator.pushNamed(context, '/');
+                },
+              ),
+              Container(
+                height: 50,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: <Color>[
+                      kLightPrimaryColor,
+                      kPrimaryColor,
+                    ],
+                  ),
+                ),
               ),
             ],
           ),
