@@ -8,10 +8,10 @@ class SharedPreferencesManager {
     prefs = await SharedPreferences.getInstance();
   }
 
-  void setProfileData(String name, String timezone, bool nightOwl) {
-    prefs.setString('UserName', name);
-    prefs.setString('UserTimeZone', timezone);
-    prefs.setBool('NightOwl', nightOwl);
+  void setProfileData(String? name, String? timezone, bool? nightOwl) {
+    prefs.setString('UserName', name??'');
+    prefs.setString('UserTimeZone', timezone??'');
+    prefs.setBool('NightOwl', nightOwl??true);
   }
 
   void setAlarmData(
