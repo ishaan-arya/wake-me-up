@@ -21,16 +21,26 @@ class SharedPreferencesManager {
       required String alarmName,
       required String alarmMessage,
       required bool vibration,
-      required BuildContext context}) {
+      required BuildContext context}) async {
     String time = alarmtime.toString().split('(')[1].split(')')[0];
-    prefs.setString('AlarmTime_' + alarmId, time);
-    prefs.setString('Repeat_' + alarmId, repeat);
-    prefs.setString('AlarmName_' + alarmId, alarmName);
-    prefs.setString('AlarmMessage_' + alarmId, alarmMessage);
-    prefs.setBool('Vibration_' + alarmId, vibration);
+    List<String>? currentAlarms = prefs.getStringList('Alarms');
+    if (currentAlarms == null) {
+      currentAlarms = [alarmId];
+    } else {
+      currentAlarms.add(alarmId);
+    }
+    await prefs.setStringList('Alarms', currentAlarms);
+    await prefs.setString('AlarmTime_' + alarmId, time);
+    await prefs.setString('Repeat_' + alarmId, repeat);
+    await prefs.setString('AlarmName_' + alarmId, alarmName);
+    await prefs.setString('AlarmMessage_' + alarmId, alarmMessage);
+    await prefs.setBool('Vibration_' + alarmId, vibration);
   }
 
   void deleteAlarmData(String alarmId) {
+    List<String>? currentAlarms = prefs.getStringList('Alarms');
+    currentAlarms?.remove(alarmId);
+    prefs.setStringList('Alarms', currentAlarms??[]);
     prefs.remove('Repeat_' + alarmId);
     prefs.remove('AlarmName_' + alarmId);
     prefs.remove('AlarmMessage_' + alarmId);
@@ -43,6 +53,11 @@ class SharedPreferencesManager {
 
   void deactivateAlarm(String alarmId, bool) {
     prefs.setBool('Active_' + alarmId, false);
+  }
+
+  List<String>? getAlarms() {
+    List<String>? alarms = prefs.getStringList('Alarms');
+    return alarms;
   }
 
   Map<String, dynamic> getAlarmData(String alarmId) {
