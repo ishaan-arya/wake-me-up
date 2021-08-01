@@ -6,6 +6,9 @@ const kLightPrimaryColor = Color(0xFF3E3B63);
 const kSecondaryColor = Color(0xFF62DCFA);
 const kContrastColor = Colors.white;
 const kContrastColor2 = Color(0xFFC4C4C4);
+const kDarkYellowColor = Color(0xFFF6C84B);
+const kLightYellowColor = Color(0xFFFAE7AE);
+const kVeryLightYellowColor = Color(0xFFCF3D7);
 
 //Text Styles
 const kHeaderTextStyle = TextStyle(
@@ -30,5 +33,15 @@ const kProfileItemTextStyle = TextStyle(
   fontSize: 18,
 );
 
-const kQRTextStyle =
-    TextStyle(fontFamily: 'Poppins', fontSize: 18, color: kContrastColor);
+const kQRTextStyle = TextStyle(
+  fontFamily: 'Poppins',
+  fontSize: 16,
+  color: kContrastColor,
+);
+
+const kMassiveTextStyle = TextStyle(
+  fontFamily: 'Poppins',
+  fontSize: 60,
+  color: Colors.white,
+  fontWeight: FontWeight.bold,
+);

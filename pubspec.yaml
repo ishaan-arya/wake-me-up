@@ -28,6 +28,8 @@ dependencies:
   shared_preferences: ^2.0.6
   cupertino_icons: ^1.0.2
   uuid: 3.0.4
+  slide_to_act: 2.0.1
+  flutter_local_notifications: ^8.0.0
 
 dev_dependencies:
   flutter_test:
@@ -51,6 +53,8 @@ flutter:
     - images/owl.png
     - images/lark.png
     - images/qrcode.png
+    - images/morning_sun.png
+    - images/night_moon.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
