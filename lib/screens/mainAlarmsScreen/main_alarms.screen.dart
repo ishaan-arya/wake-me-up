@@ -45,14 +45,14 @@ class _MainAlarmsScreenState extends State<MainAlarmsScreen> {
     await sharedprefs.initprefs();
     setState(() {
       alarms = sharedprefs.getAlarms();
-      alarms = ['eeee', 'oooo'];
     });
+    print(alarms);
   }
 
   Widget alarmTile(Map alarmData, String alarmId) {
     String? repeat = alarmData['repeat'];
     String? alarmTime = alarmData['alarmTime'];
-    bool activeState = alarmData['activeState'];
+    bool? activeState = alarmData['activeState'];
     return Card(
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(20))),
@@ -76,13 +76,14 @@ class _MainAlarmsScreenState extends State<MainAlarmsScreen> {
                 Switch(
                   thumbColor: MaterialStateProperty.all(kPrimaryColor),
                   inactiveTrackColor: Colors.blue.shade300,
-                    value: activeState,
-                    onChanged: (val) {
-                      val
-                          ? sharedprefs.activateAlarm(alarmId)
-                          : sharedprefs.deactivateAlarm(alarmId);
-                      setState(() {});
-                    }),
+                  value: activeState ?? true,
+                  onChanged: (val) {
+                    val
+                        ? sharedprefs.activateAlarm(alarmId)
+                        : sharedprefs.deactivateAlarm(alarmId);
+                    setState(() {});
+                  },
+                ),
               ],
             ),
             Row(
@@ -91,12 +92,15 @@ class _MainAlarmsScreenState extends State<MainAlarmsScreen> {
               children: [
                 Text(alarmTime ?? '12:00', style: kProfileItemTextStyle),
                 IconButton(
-                    onPressed: () {
-                      sharedprefs.deleteAlarmData(alarmId);
-                      setState(() {});
-                    },
-                    icon: Icon(Icons.delete,
-                        color: Colors.red.shade700.withOpacity(0.9)))
+                  onPressed: () {
+                    sharedprefs.deleteAlarmData(alarmId);
+                    setState(() {});
+                  },
+                  icon: Icon(
+                    Icons.delete,
+                    color: Colors.red.shade700.withOpacity(0.9),
+                  ),
+                )
               ],
             )
           ],
@@ -132,29 +136,28 @@ class _MainAlarmsScreenState extends State<MainAlarmsScreen> {
                 style: kProfileItemTextStyle,
               ),
               SizedBox(height: 40),
+              DesignedAnalogClock(),
               SizedBox(height: 20),
               Expanded(
                 child: Container(
-                    height: MediaQuery.of(context).size.height / 2,
-                    child: alarms != null
-                        ? ListView.builder(
-                            itemCount: alarms?.length,
-                            itemBuilder: (context, index) {
-                              String alarmId = alarms![index];
-                              //Map alarmData = sharedprefs.getAlarmData(alarmId);
-                              Map alarmData = {
-                                'repeat': 'Daily',
-                                'alarmTime': '8:00 AM',
-                                'activeState': true,
-                              };
-                              return alarmTile(alarmData, alarmId);
-                            },
-                          )
-                        : Container(
-                            child: Text(
-                            'Please Schedule an Alarm',
-                            style: TextStyle(color: Colors.white, fontSize: 20),
-                          ))),
+                  height: MediaQuery.of(context).size.height / 2,
+                  child: alarms != null
+                      ? ListView.builder(
+                          itemCount: alarms?.length,
+                          itemBuilder: (context, index) {
+                            String alarmId = alarms![index];
+                            Map alarmData = sharedprefs.getAlarmData(alarmId);
+                            return alarmTile(alarmData, alarmId);
+                          },
+                        )
+                      : Container(
+                          margin: EdgeInsets.only(top: 30),
+                          child: Text(
+                            'No Scheduled Alarms',
+                            style: kSubheadingTextStyle,
+                          ),
+                        ),
+                ),
               ),
               Stack(
                 children: [
@@ -178,7 +181,7 @@ class _MainAlarmsScreenState extends State<MainAlarmsScreen> {
                   Center(
                     child: AddAlarmButton(
                       onTap: () {
-                        Navigator.pushNamed(context, '/');
+                        Navigator.pushReplacementNamed(context, '/');
                       },
                     ),
                   ),
