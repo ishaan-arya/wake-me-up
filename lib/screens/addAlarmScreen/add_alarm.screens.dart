@@ -10,8 +10,8 @@ class AddAlarmScreen extends StatefulWidget {
 }
 
 class _AddAlarmScreenState extends State<AddAlarmScreen> {
-  String alarmName;
-  String alarmMessage;
+  String? alarmName;
+  String? alarmMessage;
 
   TimeOfDay _time = TimeOfDay(hour: 7, minute: 15);
   var timeUserSelected;
@@ -20,7 +20,7 @@ class _AddAlarmScreenState extends State<AddAlarmScreen> {
   bool isSwitched = false;
   bool vibrate = false;
 
-  int slidingSegmentedControlValue = 1;
+  int? slidingSegmentedControlValue = 1;
 
   void toggleSwitch(bool value) {
     if (isSwitched == false) {
@@ -37,7 +37,7 @@ class _AddAlarmScreenState extends State<AddAlarmScreen> {
   }
 
   void _selectTime() async {
-    final TimeOfDay newTime = await showTimePicker(
+    final TimeOfDay? newTime = await showTimePicker(
       context: context,
       initialTime: _time,
     );
@@ -138,7 +138,7 @@ class _AddAlarmScreenState extends State<AddAlarmScreen> {
                                 4: Text('Weekends',
                                     style: TextStyle(color: kContrastColor)),
                               },
-                              onValueChanged: (value) {
+                              onValueChanged: (int? value) {
                                 setState(() {
                                   slidingSegmentedControlValue = value;
                                 });

@@ -12,7 +12,7 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  SelectedBird _character = SelectedBird.nightOwl;
+  SelectedBird? _character = SelectedBird.nightOwl;
 
   bool isOwl = true;
 
@@ -84,7 +84,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     leading: Radio<SelectedBird>(
                       value: SelectedBird.lark,
                       groupValue: _character,
-                      onChanged: (SelectedBird value) {
+                      onChanged: (SelectedBird? value) {
                         setState(() {
                           _character = value;
                           isOwl = false;
@@ -104,7 +104,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     leading: Radio<SelectedBird>(
                       value: SelectedBird.nightOwl,
                       groupValue: _character,
-                      onChanged: (SelectedBird value) {
+                      onChanged: (SelectedBird? value) {
                         setState(() {
                           _character = value;
                           isOwl = true;
