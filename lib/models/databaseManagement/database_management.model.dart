@@ -35,6 +35,7 @@ class SharedPreferencesManager {
     await prefs.setString('AlarmName_' + alarmId, alarmName);
     await prefs.setString('AlarmMessage_' + alarmId, alarmMessage);
     await prefs.setBool('Vibration_' + alarmId, vibration);
+    await prefs.setBool('Active_' + alarmId, true);
   }
 
   void deleteAlarmData(String alarmId) {
@@ -45,6 +46,7 @@ class SharedPreferencesManager {
     prefs.remove('AlarmName_' + alarmId);
     prefs.remove('AlarmMessage_' + alarmId);
     prefs.remove('Vibration_' + alarmId);
+    prefs.remove('Active_' + alarmId);
   }
 
   void activateAlarm(String alarmId) {

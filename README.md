@@ -17,6 +17,8 @@ Oftentimes, we used to have late nights. While we'd set an alarm for the next mo
 ## Challenges we ran into
 We encounter numerous difficulties while creating the application. Flutter is known to have minimal support when running background tasks, and since our app was that of an alarm, this was highly important. However, we were soon able to figure out how to work around that but encountered another problem. We had issues with playing the audio in the alarm application, and we had to test out various different packages and libraries.
 
+We also encountered issues when coding the clock and using the analog packages. The analog package that we were using was not null safe, whereas the rest of our code was null safe. Due to this, we did not use the analog package, and we made the analog tools such as the clocks on our own using mathematical formulae and canvas painting.
+
 
 
 ## Accomplishments that we're proud of
@@ -29,6 +31,12 @@ We encounter numerous difficulties while creating the application. Flutter is kn
 
 ## What's next for Wake Me Up
 We believe that "Wake Me Up" is a unique, and revolutionary application. Hence, we want to continue to develop the application and hopefully release it into app stores for users to download. In doing so, we hope the will make the world a happier and more productive place.
+
+## Images of Application
+![wake_me_up_2 (1)](https://user-images.githubusercontent.com/66540789/127780709-e23a8303-a5bd-4c73-b3a7-4514f40134a5.png)
+![Screenshot_1627817363](https://user-images.githubusercontent.com/66540789/127780714-182789a2-cf08-4b89-b731-99fb49292613.png)
+![Screenshot_1627754962](https://user-images.githubusercontent.com/66540789/127780720-5d354874-a4c3-4174-be33-0103ad989784.png)
+
 
 
 
