@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:wake_me_up/widgets/header/header.widget.dart';
 import 'package:wake_me_up/utils/constants/constants.utils.dart';
 import 'package:wake_me_up/widgets/gradientTextInputField/gradient_text_input_field.widget.dart';
@@ -126,7 +125,8 @@ class _AddAlarmScreenState extends State<AddAlarmScreen> {
                             style: kSubheadingTextStyle,
                           ),
                           GradientTextInputField(
-                            textField: CupertinoSlidingSegmentedControl(
+                            height: 52,
+                            child: CupertinoSlidingSegmentedControl(
                               groupValue: slidingSegmentedControlValue,
                               children: {
                                 1: Text('Today',
@@ -151,7 +151,8 @@ class _AddAlarmScreenState extends State<AddAlarmScreen> {
                             style: kSubheadingTextStyle,
                           ),
                           GradientTextInputField(
-                            textField: TextField(
+                            height: 52,
+                            child: TextField(
                               onChanged: (_value) {
                                 alarmName = _value;
                               },
@@ -162,7 +163,8 @@ class _AddAlarmScreenState extends State<AddAlarmScreen> {
                             style: kSubheadingTextStyle,
                           ),
                           GradientTextInputField(
-                            textField: TextField(
+                            height: 52,
+                            child: TextField(
                               onChanged: (_value) {
                                 alarmMessage = _value;
                               },
