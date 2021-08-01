@@ -9,9 +9,9 @@ class SharedPreferencesManager {
   }
 
   void setProfileData(String? name, String? timezone, bool? nightOwl) {
-    prefs.setString('UserName', name ?? '');
-    prefs.setString('UserTimeZone', timezone ?? '');
-    prefs.setBool('NightOwl', nightOwl ?? true);
+    prefs.setString('UserName', name??'');
+    prefs.setString('UserTimeZone', timezone??'');
+    prefs.setBool('NightOwl', nightOwl??true);
   }
 
   void setAlarmData(

@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         '/second': (context) => ProfileScreen(),
         '/third': (context) => MainAlarmsScreen(),
       },
-      initialRoute: '/second',
+      initialRoute: '/third',
     );
   }
 }
