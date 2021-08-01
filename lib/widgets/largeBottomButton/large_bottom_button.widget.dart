@@ -3,7 +3,7 @@ import 'package:wake_me_up/utils/constants/constants.utils.dart';
 
 class LargeBottomButton extends StatelessWidget {
   final Widget child;
-  LargeBottomButton({this.child});
+  LargeBottomButton({required this.child});
 
   @override
   Widget build(BuildContext context) {
