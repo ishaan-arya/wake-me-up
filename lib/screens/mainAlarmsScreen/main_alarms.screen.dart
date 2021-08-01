@@ -60,9 +60,13 @@ class MainAlarmsScreen extends StatelessWidget {
                 },
               ),
               Container(
-                height: 50,
+                height: 60,
                 width: double.infinity,
                 decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(20),
+                    topLeft: Radius.circular(20),
+                  ),
                   gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
@@ -71,6 +75,16 @@ class MainAlarmsScreen extends StatelessWidget {
                       kPrimaryColor,
                     ],
                   ),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SizedBox(width: 1),
+                    Icon(Icons.alarm, color: kContrastColor),
+                    SizedBox(width: 10),
+                    Icon(Icons.supervised_user_circle, color: kContrastColor),
+                    SizedBox(width: 1),
+                  ],
                 ),
               ),
             ],
