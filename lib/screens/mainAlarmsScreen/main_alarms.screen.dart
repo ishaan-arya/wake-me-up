@@ -132,7 +132,6 @@ class _MainAlarmsScreenState extends State<MainAlarmsScreen> {
                 style: kProfileItemTextStyle,
               ),
               SizedBox(height: 40),
-              DesignedAnalogClock(),
               SizedBox(height: 20),
               Expanded(
                 child: Container(
@@ -162,6 +161,7 @@ class _MainAlarmsScreenState extends State<MainAlarmsScreen> {
                   Positioned(
                     top: 20,
                     child: LargeBottomButton(
+                      onTap: () {},
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [

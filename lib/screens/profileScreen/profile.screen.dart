@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:wake_me_up/models/databaseManagement/database_management.model.dart';
 import 'package:wake_me_up/widgets/header/header.widget.dart';
 import 'package:wake_me_up/utils/constants/constants.utils.dart';
 import 'package:wake_me_up/widgets/gradientTextInputField/gradient_text_input_field.widget.dart';
+import 'package:wake_me_up/widgets/largeBottomButton/large_bottom_button.widget.dart';
 
 enum SelectedBird { lark, nightOwl }
 
@@ -12,9 +14,17 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  SelectedBird? _character = SelectedBird.nightOwl;
+  String? name;
+  String? timezone;
 
+  SelectedBird? _character = SelectedBird.nightOwl;
+  SharedPreferencesManager sharedPreferencesManager =
+      SharedPreferencesManager();
   bool isOwl = true;
+
+  void initState() {
+    sharedPreferencesManager.initprefs();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +65,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   height: 37,
                   child: TextField(
                     style: TextStyle(color: Colors.white),
-                    onChanged: (value) {},
+                    onChanged: (value) {
+                      name = value;
+                    },
                   ),
                 ),
                 SizedBox(
@@ -66,7 +78,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   height: 37,
                   child: TextField(
                     style: TextStyle(color: Colors.white),
-                    onChanged: (value) {},
+                    onChanged: (value) {
+                      timezone = value;
+                    },
                   ),
                 ),
                 SizedBox(
@@ -133,6 +147,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   onTap: () {
                     Navigator.pushNamed(context, '/first');
+                  },
+                ),
+                SizedBox(height: 10),
+                LargeBottomButton(
+                  child: Center(
+                    child: Text('Save Changes', style: kProfileItemTextStyle),
+                  ),
+                  onTap: () {
+                    sharedPreferencesManager.setProfileData(
+                        name, timezone, isOwl);
                   },
                 ),
               ],
