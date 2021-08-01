@@ -22,7 +22,7 @@ class SharedPreferencesManager {
       required String alarmMessage,
       required bool vibration,
       required BuildContext context}) async {
-    String time = alarmtime.toString().split('(')[1].split(')')[0];
+    String time = '${alarmtime.hour} : ${alarmtime.minute}';
     List<String>? currentAlarms = prefs.getStringList('Alarms');
     if (currentAlarms == null) {
       currentAlarms = [alarmId];

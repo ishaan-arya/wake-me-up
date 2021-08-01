@@ -37,6 +37,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               children: [
                 Header(
                   title: 'Profile',
+                  routeName: '/third',
                 ),
                 SizedBox(
                   height: 20,
