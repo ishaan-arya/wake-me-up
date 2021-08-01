@@ -9,9 +9,9 @@ class SharedPreferencesManager {
   }
 
   void setProfileData(String? name, String? timezone, bool? nightOwl) {
-    prefs.setString('UserName', name??'');
-    prefs.setString('UserTimeZone', timezone??'');
-    prefs.setBool('NightOwl', nightOwl??true);
+    prefs.setString('UserName', name ?? '');
+    prefs.setString('UserTimeZone', timezone ?? '');
+    prefs.setBool('NightOwl', nightOwl ?? true);
   }
 
   void setAlarmData(
@@ -40,7 +40,7 @@ class SharedPreferencesManager {
   void deleteAlarmData(String alarmId) {
     List<String>? currentAlarms = prefs.getStringList('Alarms');
     currentAlarms?.remove(alarmId);
-    prefs.setStringList('Alarms', currentAlarms??[]);
+    prefs.setStringList('Alarms', currentAlarms ?? []);
     prefs.remove('Repeat_' + alarmId);
     prefs.remove('AlarmName_' + alarmId);
     prefs.remove('AlarmMessage_' + alarmId);
@@ -51,7 +51,7 @@ class SharedPreferencesManager {
     prefs.setBool('Active_' + alarmId, true);
   }
 
-  void deactivateAlarm(String alarmId, bool) {
+  void deactivateAlarm(String alarmId) {
     prefs.setBool('Active_' + alarmId, false);
   }
 
@@ -66,6 +66,7 @@ class SharedPreferencesManager {
     String? alarmName = prefs.getString('AlarmName_' + alarmId);
     String? alarmMessage = prefs.getString('AlarmMessage_' + alarmId);
     bool? vibration = prefs.getBool('Vibration_' + alarmId);
+    bool? activeState = prefs.getBool('Active_' + alarmId);
     return {
       'alarmId': alarmId,
       'alarmTime': time,
@@ -73,6 +74,7 @@ class SharedPreferencesManager {
       'alarmName': alarmName,
       'alarmMessage': alarmMessage,
       'vibration': vibration,
+      'activeState': activeState,
     };
   }
 

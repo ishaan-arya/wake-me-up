@@ -11,7 +11,7 @@ class LargeBottomButton extends StatelessWidget {
     return GestureDetector(
       child: Container(
         height: 60,
-        width: double.infinity,
+        width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
