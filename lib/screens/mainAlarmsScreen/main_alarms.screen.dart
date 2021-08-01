@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:wake_me_up/utils/constants/constants.utils.dart';
 import 'package:wake_me_up/widgets/designedAnalogClock/designed_analog_clock.widget.dart';
 import 'package:wake_me_up/widgets/addAlarmButton/add_alarm_button.widget.dart';
+import 'package:wake_me_up/widgets/largeBottomButton/large_bottom_button.widget.dart';
 
 class MainAlarmsScreen extends StatelessWidget {
   var zero = DateTime.now().minute < 10 ? '0' : '';
@@ -59,23 +60,7 @@ class MainAlarmsScreen extends StatelessWidget {
                   Navigator.pushNamed(context, '/');
                 },
               ),
-              Container(
-                height: 60,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(20),
-                    topLeft: Radius.circular(20),
-                  ),
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: <Color>[
-                      kLightPrimaryColor,
-                      kPrimaryColor,
-                    ],
-                  ),
-                ),
+              LargeBottomButton(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
