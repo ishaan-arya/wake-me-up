@@ -33,8 +33,11 @@ const kProfileItemTextStyle = TextStyle(
   fontSize: 18,
 );
 
-const kQRTextStyle =
-    TextStyle(fontFamily: 'Poppins', fontSize: 18, color: kContrastColor);
+const kQRTextStyle = TextStyle(
+  fontFamily: 'Poppins',
+  fontSize: 16,
+  color: kContrastColor,
+);
 
 const kMassiveTextStyle = TextStyle(
   fontFamily: 'Poppins',
