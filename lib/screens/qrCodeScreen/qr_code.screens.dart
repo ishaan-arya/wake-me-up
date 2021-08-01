@@ -11,7 +11,7 @@ class QRCodeScreen extends StatelessWidget {
           backgroundColor: kPrimaryColor,
           body: Column(
             children: [
-              Header(title: "Print Your QR Code"),
+              Header(title: "Print Your QR Code", routeName: '/third',),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.1,
               ),

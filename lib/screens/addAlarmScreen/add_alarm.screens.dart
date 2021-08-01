@@ -77,7 +77,7 @@ class _AddAlarmScreenState extends State<AddAlarmScreen> {
           backgroundColor: kPrimaryColor,
           body: Column(
             children: [
-              Header(title: 'Add an Alarm'),
+              Header(title: 'Add an Alarm', routeName: '/third',),
               SizedBox(
                 height: 20,
               ),

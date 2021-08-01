@@ -4,7 +4,8 @@ import 'package:wake_me_up/utils/constants/constants.utils.dart';
 
 class Header extends StatelessWidget {
   String title;
-  Header({required this.title});
+  String routeName;
+  Header({required this.title, required this.routeName});
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -17,7 +18,7 @@ class Header extends StatelessWidget {
               color: kContrastColor,
             ),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.pushReplacementNamed(context, routeName);
             },
           ),
           title: Text(
