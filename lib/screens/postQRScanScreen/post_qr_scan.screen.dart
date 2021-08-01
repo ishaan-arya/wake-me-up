@@ -1,9 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:wake_me_up/models/databaseManagement/database_management.model.dart';
 import 'package:wake_me_up/utils/constants/constants.utils.dart';
 import 'package:slide_to_act/slide_to_act.dart';
 
-class PostQRScanScreen extends StatelessWidget {
+class PostQRScanScreen extends StatefulWidget {
+  final String alarmId;
+  const PostQRScanScreen({Key? key, required this.alarmId});
+
+  @override
+  _PostQRScanScreenState createState() => _PostQRScanScreenState();
+}
+
+class _PostQRScanScreenState extends State<PostQRScanScreen> {
   var zero = DateTime.now().minute < 10 ? '0' : '';
+  SharedPreferencesManager preferencesManager = SharedPreferencesManager();
+  Map alarmData = {
+    'alarmId': '',
+    'alarmTime': '',
+    'repeat': '',
+    'alarmName': '',
+    'alarmMessage': '',
+    'vibration': '',
+    'activeState': '',
+  };
+
+  void initializeAlarmDetails() async {
+    await preferencesManager.initprefs();
+    alarmData = preferencesManager.getAlarmData(widget.alarmId);
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +98,7 @@ class PostQRScanScreen extends StatelessWidget {
                 ),
                 Center(
                   child: Text(
-                    'Alarm name',
+                    alarmData['alarmName'],
                     //TODO: Add alarm name according to database
                     style: kHeaderTextStyle,
                   ),
@@ -87,7 +118,7 @@ class PostQRScanScreen extends StatelessWidget {
                     outerColor: kDarkYellowColor,
                     innerColor: kPrimaryColor,
                     onSubmit: () {
-                      Navigator.pop(context);
+                      Navigator.pushReplacementNamed(context, '/third');
                     },
                   ),
                 ),

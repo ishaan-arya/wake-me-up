@@ -189,6 +189,8 @@ class _MainAlarmsScreenState extends State<MainAlarmsScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           SizedBox(width: 1),
+                          Icon(Icons.qr_code, color: kContrastColor),
+
                           GestureDetector(
                             child: Icon(
                               Icons.qr_code,
