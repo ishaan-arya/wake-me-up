@@ -169,7 +169,7 @@ class _MainAlarmsScreenState extends State<MainAlarmsScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           SizedBox(width: 1),
-                          Icon(Icons.alarm, color: kContrastColor),
+                          Icon(Icons.qr_code, color: kContrastColor),
                           SizedBox(width: 10),
                           Icon(Icons.supervised_user_circle,
                               color: kContrastColor),
