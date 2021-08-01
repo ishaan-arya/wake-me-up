@@ -118,7 +118,7 @@ class _PostQRScanScreenState extends State<PostQRScanScreen> {
                     outerColor: kDarkYellowColor,
                     innerColor: kPrimaryColor,
                     onSubmit: () {
-                      Navigator.pushReplacementNamed(context, '/third');
+                      Navigator.pop(context);
                     },
                   ),
                 ),

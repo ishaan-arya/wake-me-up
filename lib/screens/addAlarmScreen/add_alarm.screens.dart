@@ -1,10 +1,18 @@
+import 'dart:math';
+import 'dart:typed_data';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:wake_me_up/main.dart';
+import 'package:wake_me_up/models/alarm/alarm.model.dart';
 import 'package:wake_me_up/widgets/header/header.widget.dart';
 import 'package:wake_me_up/utils/constants/constants.utils.dart';
 import 'package:wake_me_up/widgets/gradientTextInputField/gradient_text_input_field.widget.dart';
 import 'package:uuid/uuid.dart';
 import 'package:wake_me_up/models/databaseManagement/database_management.model.dart';
+import 'package:timezone/data/latest.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
 
 class AddAlarmScreen extends StatefulWidget {
   @override
@@ -17,8 +25,34 @@ class _AddAlarmScreenState extends State<AddAlarmScreen> {
   var uuid = Uuid();
   final _formKey = GlobalKey<FormState>();
 
+  void scheduleNotification(Map alarmData) async {
+    AndroidNotificationDetails androidPlatformChannelSpecifics =
+        AndroidNotificationDetails(
+      'alarm notification channel',
+      'alarm notification channel',
+      'channel for alarm notifications',
+      importance: Importance.max,
+      priority: Priority.high,
+      largeIcon: DrawableResourceAndroidBitmap('wake_me_up'),
+      additionalFlags: Int32List.fromList(<int>[4]),
+    );
+    NotificationDetails platformChannelSpecifics =
+        NotificationDetails(android: androidPlatformChannelSpecifics);
+    await flutterLocalNotificationsPlugin.zonedSchedule(
+        0,
+        'Your Alarm - ${alarmData['alarmName']}',
+        '${alarmData['alarmMessage']}',
+        tz.TZDateTime.now(tz.local).add(const Duration(seconds: 10)),
+        platformChannelSpecifics,
+        androidAllowWhileIdle: true,
+        uiLocalNotificationDateInterpretation:
+            UILocalNotificationDateInterpretation.absoluteTime,
+        payload: alarmData['alarmId']);
+  }
+
   void initState() {
     sharedPreferencesManager.initprefs();
+    super.initState();
   }
 
   List<String> repeatList = [
@@ -246,8 +280,14 @@ class _AddAlarmScreenState extends State<AddAlarmScreen> {
                 ),
                 onTap: () {
                   if (_formKey.currentState!.validate()) {
+                    String alarmId = uuid.v1();
+                    scheduleNotification({
+                      'alarmName': alarmName,
+                      'alarmMessage': alarmMessage,
+                      'alarmId': alarmId
+                    });
                     sharedPreferencesManager.setAlarmData(
-                      alarmId: uuid.v1(),
+                      alarmId: alarmId,
                       alarmtime: _time,
                       repeat: repeatList[slidingSegmentedControlValue! - 1],
                       alarmName: alarmName,

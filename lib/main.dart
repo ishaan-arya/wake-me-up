@@ -6,11 +6,14 @@ import 'package:wake_me_up/screens/addAlarmScreen/add_alarm.screens.dart';
 import 'package:wake_me_up/screens/profileScreen/profile.screen.dart';
 import 'package:wake_me_up/screens/mainAlarmsScreen/main_alarms.screen.dart';
 import 'package:wake_me_up/screens/postQRScanScreen/post_qr_scan.screen.dart';
+import 'package:timezone/data/latest.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
 
 FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
 
 void main() {
+  tz.initializeTimeZones();
   runApp(MyApp());
 }
 
@@ -25,8 +28,11 @@ class _MyAppState extends State<MyApp> {
 
   Future<void> onSelectNotification(String? notifpayload) async {
     if (payload != null) {
-      route = '/fourth';
       payload = notifpayload.toString();
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => QRScanScreen(payload: payload.toString())));
     }
   }
 
@@ -57,7 +63,6 @@ class _MyAppState extends State<MyApp> {
         '/second': (context) => ProfileScreen(),
         '/third': (context) => MainAlarmsScreen(),
         // '/fourth': (context) => PostQRScanScreen(),
-        '/fourth': (context) => QRScanScreen(payload: payload.toString()),
       },
       initialRoute: route,
     );
