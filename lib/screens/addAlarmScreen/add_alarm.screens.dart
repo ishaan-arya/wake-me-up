@@ -125,7 +125,8 @@ class _AddAlarmScreenState extends State<AddAlarmScreen> {
                             style: kSubheadingTextStyle,
                           ),
                           GradientTextInputField(
-                            textField: CupertinoSlidingSegmentedControl(
+                            height: 52,
+                            child: CupertinoSlidingSegmentedControl(
                               groupValue: slidingSegmentedControlValue,
                               children: {
                                 1: Text('Today',
@@ -150,7 +151,8 @@ class _AddAlarmScreenState extends State<AddAlarmScreen> {
                             style: kSubheadingTextStyle,
                           ),
                           GradientTextInputField(
-                            textField: TextField(
+                            height: 52,
+                            child: TextField(
                               onChanged: (_value) {
                                 alarmName = _value;
                               },
@@ -161,7 +163,8 @@ class _AddAlarmScreenState extends State<AddAlarmScreen> {
                             style: kSubheadingTextStyle,
                           ),
                           GradientTextInputField(
-                            textField: TextField(
+                            height: 52,
+                            child: TextField(
                               onChanged: (_value) {
                                 alarmMessage = _value;
                               },

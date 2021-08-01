@@ -23,3 +23,8 @@ const kSubheadingTextStyle = TextStyle(
   fontFamily: 'Poppins',
   fontSize: 20,
 );
+const kProfileItemTextStyle = TextStyle(
+  color: kContrastColor,
+  fontFamily: 'Poppins',
+  fontSize: 18,
+);
