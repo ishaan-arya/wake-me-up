@@ -37,7 +37,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
               children: [
                 Header(
                   title: 'Profile',
-                  routeName: '/third',
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
                 ),
                 SizedBox(
                   height: 20,

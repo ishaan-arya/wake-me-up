@@ -63,7 +63,7 @@ class SharedPreferencesManager {
   }
 
   Map<String, dynamic> getAlarmData(String alarmId) {
-    String? time = prefs.getString('AlarmTime' + alarmId);
+    String? time = prefs.getString('AlarmTime_' + alarmId);
     String? repeat = prefs.getString('Repeat_' + alarmId);
     String? alarmName = prefs.getString('AlarmName_' + alarmId);
     String? alarmMessage = prefs.getString('AlarmMessage_' + alarmId);
