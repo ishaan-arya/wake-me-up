@@ -15,6 +15,7 @@ Oftentimes, we used to have late nights. While we'd set an alarm for the next mo
 
 
 ## Challenges we ran into
+We encounter numerous difficulties while creating the application. Flutter is known to have minimal support when running background tasks, and since our app was that of an alarm, this was highly important. However, we were soon able to figure out how to work around that but encountered another problem. We had issues with playing the audio in the alarm application, and we had to test out various different packages and libraries.
 
 
 
