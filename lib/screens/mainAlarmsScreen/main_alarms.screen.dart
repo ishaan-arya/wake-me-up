@@ -16,6 +16,7 @@ class _MainAlarmsScreenState extends State<MainAlarmsScreen> {
   List<String>? alarms;
   SharedPreferencesManager sharedprefs = SharedPreferencesManager();
   var zero = DateTime.now().minute < 10 ? '0' : '';
+  var zero1 = DateTime.now().hour < 10 ? '0' : '';
 
   Timer? timer;
 
@@ -93,7 +94,7 @@ class _MainAlarmsScreenState extends State<MainAlarmsScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(alarmTime ?? '12:00', style: kProfileItemTextStyle),
+                Text(alarmTime ?? '07:15', style: kProfileItemTextStyle),
                 IconButton(
                   onPressed: () {
                     setState(() {
@@ -146,7 +147,7 @@ class _MainAlarmsScreenState extends State<MainAlarmsScreen> {
               SizedBox(height: 40),
               Center(
                 child: Text(
-                  '${DateTime.now().hour}:${zero}${DateTime.now().minute}',
+                  '${zero1}${DateTime.now().hour}:${zero}${DateTime.now().minute}',
                   style: kTimeTextStyle,
                 ),
               ),
