@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 
-enum Repeat { Today, Weekdays, Daily, Weekends }
-
 List<Alarm> alarmList = [];
 
 class Alarm {
   String? id;
-  Repeat? repeat;
+  String? repeat;
   String? name;
   String? message;
   TimeOfDay? time;
