@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:wake_me_up/utils/constants/constants.utils.dart';
 
 class DesignedAnalogClock extends StatefulWidget {
-  const DesignedAnalogClock({Key? key}) : super(key: key);
-
   @override
   _DesignedAnalogClockState createState() => _DesignedAnalogClockState();
 }
@@ -58,7 +56,7 @@ class ClockPainter extends CustomPainter {
     var centerX = size.width / 2;
     var centerY = size.height / 2;
     var center = Offset(centerX, centerY);
-    var radius = 125.0;
+    var radius = 115.0;
 
     var fillBrush = Paint()
       ..shader = LinearGradient(
@@ -119,8 +117,6 @@ class ClockPainter extends CustomPainter {
     return true;
   }
 }
-
-
 
 // import 'package:flutter/material.dart';
 // import 'package:wake_me_up/utils/constants/constants.utils.dart';

@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         '/third': (context) => MainAlarmsScreen(),
         '/fourth': (context) => PostQRScanScreen(),
       },
-      initialRoute: '/first',
+      initialRoute: '/third',
     );
   }
 }
