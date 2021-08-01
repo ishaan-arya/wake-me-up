@@ -5,6 +5,7 @@ import 'package:wake_me_up/utils/constants/constants.utils.dart';
 import 'package:wake_me_up/widgets/designedAnalogClock/designed_analog_clock.widget.dart';
 import 'package:wake_me_up/widgets/addAlarmButton/add_alarm_button.widget.dart';
 import 'package:wake_me_up/widgets/largeBottomButton/large_bottom_button.widget.dart';
+import 'dart:async';
 
 class MainAlarmsScreen extends StatefulWidget {
   @override
@@ -15,6 +16,8 @@ class _MainAlarmsScreenState extends State<MainAlarmsScreen> {
   List<String>? alarms;
   SharedPreferencesManager sharedprefs = SharedPreferencesManager();
   var zero = DateTime.now().minute < 10 ? '0' : '';
+
+  Timer? timer;
 
   List daysOfWeek = [
     'Monday',
@@ -93,8 +96,10 @@ class _MainAlarmsScreenState extends State<MainAlarmsScreen> {
                 Text(alarmTime ?? '12:00', style: kProfileItemTextStyle),
                 IconButton(
                   onPressed: () {
-                    sharedprefs.deleteAlarmData(alarmId);
-                    setState(() {});
+                    setState(() {
+                      initAlarms();
+                      sharedprefs.deleteAlarmData(alarmId);
+                    });
                   },
                   icon: Icon(
                     Icons.delete,
@@ -111,9 +116,23 @@ class _MainAlarmsScreenState extends State<MainAlarmsScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     initAlarms();
     super.initState();
+    Timer.periodic(
+      Duration(seconds: 1),
+      (Timer t) {
+        if (this.mounted) {
+          setState(() {});
+        }
+        this.timer = t;
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    timer!.cancel();
+    super.dispose();
   }
 
   @override
@@ -169,10 +188,22 @@ class _MainAlarmsScreenState extends State<MainAlarmsScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           SizedBox(width: 1),
-                          Icon(Icons.alarm, color: kContrastColor),
+                          GestureDetector(
+                            child: Icon(
+                              Icons.qr_code,
+                              color: kContrastColor,
+                            ),
+                            onTap: () {
+                              Navigator.pushNamed(context, '/first');
+                            },
+                          ),
                           SizedBox(width: 10),
-                          Icon(Icons.supervised_user_circle,
-                              color: kContrastColor),
+                          GestureDetector(
+                              child: Icon(Icons.supervised_user_circle,
+                                  color: kContrastColor),
+                              onTap: () {
+                                Navigator.pushNamed(context, '/second');
+                              }),
                           SizedBox(width: 1),
                         ],
                       ),
@@ -181,7 +212,7 @@ class _MainAlarmsScreenState extends State<MainAlarmsScreen> {
                   Center(
                     child: AddAlarmButton(
                       onTap: () {
-                        Navigator.pushReplacementNamed(context, '/');
+                        Navigator.pushNamed(context, '/');
                       },
                     ),
                   ),

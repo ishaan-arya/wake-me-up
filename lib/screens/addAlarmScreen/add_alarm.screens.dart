@@ -78,7 +78,12 @@ class _AddAlarmScreenState extends State<AddAlarmScreen> {
           backgroundColor: kPrimaryColor,
           body: Column(
             children: [
-              Header(title: 'Add an Alarm', routeName: '/third',),
+              Header(
+                title: 'Add an Alarm',
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
               SizedBox(
                 height: 20,
               ),
