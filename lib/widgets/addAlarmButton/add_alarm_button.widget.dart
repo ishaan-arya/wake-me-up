@@ -3,7 +3,7 @@ import 'package:wake_me_up/utils/constants/constants.utils.dart';
 
 class AddAlarmButton extends StatelessWidget {
   final Function onTap;
-  AddAlarmButton({this.onTap});
+  AddAlarmButton({required this.onTap});
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -24,7 +24,9 @@ class AddAlarmButton extends StatelessWidget {
         ),
         child: Icon(Icons.add),
       ),
-      onTap: onTap,
+      onTap: () {
+        onTap();
+      },
     );
   }
 }

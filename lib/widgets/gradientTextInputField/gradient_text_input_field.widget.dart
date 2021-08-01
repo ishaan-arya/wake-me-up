@@ -3,8 +3,8 @@ import 'package:wake_me_up/utils/constants/constants.utils.dart';
 
 class GradientTextInputField extends StatelessWidget {
   final Widget child;
-  final double height;
-  GradientTextInputField({this.child, this.height});
+  final double? height;
+  GradientTextInputField({required this.child, this.height});
   @override
   Widget build(BuildContext context) {
     return Padding(
