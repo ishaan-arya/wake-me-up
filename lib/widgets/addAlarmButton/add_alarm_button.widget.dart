@@ -10,8 +10,15 @@ class AddAlarmButton extends StatelessWidget {
       child: Container(
         height: 50,
         width: 50,
+        margin: EdgeInsets.only(bottom: 30),
         decoration: BoxDecoration(
-          border: Border.all(width: 1.0),
+          boxShadow: [BoxShadow(
+            color: Colors.black45,
+            blurRadius: 10,
+            spreadRadius: 5,
+            offset: Offset(0, 5)
+          )],
+          border: Border.all(width: 1.0, color: Colors.white),
           shape: BoxShape.circle,
           gradient: LinearGradient(
             begin: Alignment.topCenter,
@@ -22,7 +29,7 @@ class AddAlarmButton extends StatelessWidget {
             ],
           ),
         ),
-        child: Icon(Icons.add),
+        child: Icon(Icons.add, color: Colors.white,),
       ),
       onTap: () {
         onTap();
