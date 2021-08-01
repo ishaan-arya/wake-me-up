@@ -27,6 +27,7 @@ class _AddAlarmScreenState extends State<AddAlarmScreen> {
     'Daily',
     'Weekends',
   ];
+
   String alarmName = '';
   String alarmMessage = '';
 
