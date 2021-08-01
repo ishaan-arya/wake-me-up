@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => AddAlarmScreen(),
         '/first': (context) => QRCodeScreen(),
       },
-      initialRoute: '/',
+      initialRoute: '/first',
     );
   }
 }

@@ -29,3 +29,7 @@ const kSubheadingTextStyle = TextStyle(
   fontFamily: 'Poppins',
   fontSize: 20,
 );
+const kQRTextStyle= TextStyle(
+    fontFamily: 'Poppins',
+    fontSize: 18,
+    color: kContrastColor);
