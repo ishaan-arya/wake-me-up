@@ -118,9 +118,8 @@ class _MainAlarmsScreenState extends State<MainAlarmsScreen> {
   @override
   void initState() {
     initAlarms();
-    super.initState();
     Timer.periodic(
-      Duration(seconds: 1),
+      Duration(minutes: 1),
       (Timer t) {
         if (this.mounted) {
           setState(() {});
@@ -128,6 +127,7 @@ class _MainAlarmsScreenState extends State<MainAlarmsScreen> {
         this.timer = t;
       },
     );
+    super.initState();
   }
 
   @override
