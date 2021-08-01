@@ -28,9 +28,7 @@ dependencies:
   shared_preferences: ^2.0.6
   analog_clock: ^0.0.4
   cupertino_icons: ^1.0.2
-  analog_clock: ^0.0.4
-    flutter_analog_clock: ^0.1.1
-
+  uuid: 3.0.4
 
 dev_dependencies:
   flutter_test:
