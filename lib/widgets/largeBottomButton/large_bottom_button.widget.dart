@@ -9,7 +9,7 @@ class LargeBottomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 60,
-      width: double.infinity,
+      width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topCenter,
