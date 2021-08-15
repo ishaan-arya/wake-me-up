@@ -48,9 +48,9 @@ We believe that "Wake Me Up" is a unique, and revolutionary application. Hence, 
     <td>Profile Screen</td>
   </tr>
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/66945981/127812542-da59d1a7-9957-4371-8593-3acdf2693a10.jpeg" width=270 height=600></td>
-    <td><img src="https://user-images.githubusercontent.com/66945981/127812630-d404cdb0-178e-4b0f-b994-126de8eea106.jpeg" width=270 height=600></td>
-    <td><img src="https://user-images.githubusercontent.com/66945981/127812678-0c481c33-c36e-4bed-af67-ccc9856988a7.jpeg" width=270 height=600></td>
+    <td><img src="https://user-images.githubusercontent.com/66945981/127812542-da59d1a7-9957-4371-8593-3acdf2693a10.jpeg" width=270 height=590></td>
+    <td><img src="https://user-images.githubusercontent.com/66945981/127812630-d404cdb0-178e-4b0f-b994-126de8eea106.jpeg" width=270 height=590></td>
+    <td><img src="https://user-images.githubusercontent.com/66945981/127812678-0c481c33-c36e-4bed-af67-ccc9856988a7.jpeg" width=270 height=590></td>
   </tr>
 
  </table>
@@ -62,9 +62,9 @@ We believe that "Wake Me Up" is a unique, and revolutionary application. Hence, 
     <td>After the QR code is scanned</td>
   </tr>
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/66540789/127780714-182789a2-cf08-4b89-b731-99fb49292613.png" width=270 height=600></td>
-    <td><img src="https://user-images.githubusercontent.com/66540789/127780720-5d354874-a4c3-4174-be33-0103ad989784.png" width=270 height=600></td>
-    <td><img src="https://user-images.githubusercontent.com/66945981/127812008-21181411-a06a-4f6c-b8c6-6a0732cd8278.png" width=270 height=600></td>
+    <td><img src="https://user-images.githubusercontent.com/66540789/127780714-182789a2-cf08-4b89-b731-99fb49292613.png" width=270 height=590></td>
+    <td><img src="https://user-images.githubusercontent.com/66540789/127780720-5d354874-a4c3-4174-be33-0103ad989784.png" width=270 height=590></td>
+    <td><img src="https://user-images.githubusercontent.com/66945981/127812008-21181411-a06a-4f6c-b8c6-6a0732cd8278.png" width=270 height=590></td>
   </tr>
  </table>
 
